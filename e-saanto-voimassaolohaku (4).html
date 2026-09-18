@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>E-sääntöjen voimassaolorekisteri</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #EAEDEC;
+    --paper-raised: #F5F6F5;
+    --ink: #171B1A;
+    --ink-soft: #4B534F;
+    --line: #C3CAC5;
+    --accent: #1F6F6A;
+    --accent-ink: #0E3E3B;
+    --stamp: #93713B;
+    --alert: #963A2C;
+    --focus: #1F6F6A;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper: #14181A;
+      --paper-raised: #1B2021;
+      --ink: #E7EBE9;
+      --ink-soft: #A6B0AC;
+      --line: #333B38;
+      --accent: #5BB3AB;
+      --accent-ink: #BFE7E2;
+      --stamp: #C9A468;
+      --alert: #D97F6B;
+      --focus: #5BB3AB;
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper: #14181A;
+    --paper-raised: #1B2021;
+    --ink: #E7EBE9;
+    --ink-soft: #A6B0AC;
+    --line: #333B38;
+    --accent: #5BB3AB;
+    --accent-ink: #BFE7E2;
+    --stamp: #C9A468;
+    --alert: #D97F6B;
+    --focus: #5BB3AB;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: "Source Serif 4", Georgia, serif;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .sheet {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 3rem 1.5rem 4rem;
+  }
+
+  .ref-line {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.04em;
+    color: var(--ink-soft);
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 0.9rem;
+    margin-bottom: 2.2rem;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  h1 {
+    font-size: clamp(1.6rem, 4vw, 2.15rem);
+    font-weight: 600;
+    line-height: 1.15;
+    margin: 0 0 0.6rem;
+    max-width: 22ch;
+  }
+
+  .lede {
+    color: var(--ink-soft);
+    max-width: 58ch;
+    font-size: 1.02rem;
+    margin: 0 0 2.4rem;
+  }
+
+  .lede a { color: var(--accent-ink); }
+
+  form {
+    display: flex;
+    align-items: flex-end;
+    gap: 0.9rem;
+    flex-wrap: wrap;
+    padding: 1.4rem 1.4rem 1.5rem;
+    background: var(--paper-raised);
+    border: 1px solid var(--line);
+    margin-bottom: 2.6rem;
+  }
+
+  .field { display: flex; flex-direction: column; gap: 0.4rem; }
+
+  label {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.72rem;
+    color: var(--ink-soft);
+  }
+
+  input[type="date"] {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 1rem;
+    padding: 0.55rem 0.6rem;
+    border: 1px solid var(--line);
+    background: var(--paper);
+    color: var(--ink);
+    min-width: 190px;
+  }
+
+  input[type="date"]:focus-visible,
+  button:focus-visible {
+    outline: 2px solid var(--focus);
+    outline-offset: 2px;
+  }
+
+  button {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.85rem;
+    letter-spacing: 0.02em;
+    padding: 0.6rem 1.3rem;
+    background: var(--accent);
+    color: var(--paper);
+    border: 1px solid var(--accent);
+    cursor: pointer;
+  }
+
+  button:hover { filter: brightness(1.08); }
+
+  .results {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 1.2rem;
+    margin-bottom: 2.2rem;
+  }
+
+  .card {
+    position: relative;
+    border: 1px solid var(--line);
+    padding: 1.3rem 1.3rem 1.4rem;
+    background: var(--paper-raised);
+  }
+
+  .card::before, .card::after,
+  .card .corner-br::before, .card .corner-br::after {
+    content: "";
+    position: absolute;
+    width: 9px;
+    height: 9px;
+    border-color: var(--ink-soft);
+  }
+  .card::before { top: -1px; left: -1px; border-top: 1px solid; border-left: 1px solid; }
+  .card::after { top: -1px; right: -1px; border-top: 1px solid; border-right: 1px solid; }
+
+  .card .reg-code {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.75rem;
+    color: var(--ink-soft);
+    margin: 0 0 0.5rem;
+  }
+
+  .card h2 {
+    font-size: 1.05rem;
+    font-weight: 600;
+    margin: 0 0 0.9rem;
+  }
+
+  .datum {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.8rem;
+    font-size: 0.92rem;
+    padding: 0.4rem 0;
+    border-top: 1px solid var(--line);
+  }
+  .datum:first-of-type { border-top: none; }
+
+  .datum dt { color: var(--ink-soft); }
+  .datum dd {
+    margin: 0;
+    font-family: "IBM Plex Mono", monospace;
+    text-align: right;
+  }
+
+  .tag {
+    display: inline-block;
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.68rem;
+    padding: 0.15rem 0.5rem;
+    margin-top: 0.9rem;
+    border: 1px solid currentColor;
+  }
+  .tag.ok { color: var(--accent-ink); }
+  .tag.warn { color: var(--alert); }
+
+  .card p.note {
+    font-size: 0.85rem;
+    color: var(--ink-soft);
+    margin: 0.9rem 0 0;
+  }
+
+  .empty-state {
+    font-size: 0.95rem;
+    color: var(--ink-soft);
+    padding: 2rem 0;
+    text-align: center;
+    border: 1px dashed var(--line);
+  }
+
+  footer {
+    border-top: 1px solid var(--line);
+    padding-top: 1.2rem;
+    font-size: 0.82rem;
+    color: var(--ink-soft);
+  }
+
+  footer p { margin: 0 0 0.6rem; }
+  footer a { color: var(--accent-ink); }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .card { transition: border-color 0.2s ease; }
+  }
+</style>
+</head>
+<body>
+<div class="sheet">
+
+  <div class="ref-line">
+    <span>E-sääntörekisteri · voimassaolohaku</span>
+    <span>Kattaa: R21,R17,R80,R14,R16,R126,R145,R44,R129,R93,R58,R73,R34</span>
+  </div>
+
+  <h1>Mikä sääntöversio koski ajoneuvoasi?</h1>
+  <p class="lede">
+    Syötä ajoneuvon käyttöönotto- tai rekisteröintipäivä. Työkalu hakee, mikä muutossarja
+    kustakin katetusta E-säännöstä oli kyseisenä päivänä EU-tyyppihyväksynnässä voimassa
+    oleva viite. Kattaa nyt 13 E-sääntöä Taulukko 1:n A-osiosta.
+  </p>
+
+  <form id="lookup-form">
+    <div class="field">
+      <label for="entry-date">Käyttöönottopäivä</label>
+      <input type="date" id="entry-date" name="entry-date" required>
+    </div>
+    <button type="submit">Hae</button>
+  </form>
+
+  <div id="results" aria-live="polite"></div>
+
+  <footer>
+    <p>
+      Data perustuu UNECE:n GlobalAutoRegs-tietokantaan ja asetukseen (EU) 2019/2144
+      (liite I, konsolidoitu 07.07.2024) sekä asetukseen (EU) 2022/1398. EU-viitteen
+      alkamispäivät ennen vuotta 2019 ovat parhaan saatavilla olevan tiedon mukaisia arvioita,
+      eivät kaikilta osin tarkistettuja voimaantulopäätöksiä — tarkista tarvittaessa
+      <a href="https://eur-lex.europa.eu/eli/reg/2019/2144/oj" target="_blank" rel="noopener">EUR-Lexistä</a>.
+    </p>
+    <p>Tämä työkalu ei ole virallinen tyyppihyväksyntäasiakirja eikä korvaa Traficomin tai valmistajan antamaa tietoa.</p>
+  </footer>
+</div>
+
+<script>
+  // Upotettu data (vastaa R21_muutossarjahistoria.csv ja R17_muutossarjahistoria.csv -tiedostoja,
+  // täydennettynä eu_reference_from / eu_reference_until -kentillä EU-viitteen aikaikkunan määrittämiseksi)
+
+  const REGULATIONS = {
+    R21: {
+      title: "E-sääntö 21 — Sisävarusteet",
+      versions: [
+        {
+          label: "01-sarja, täydennys 3",
+          unece_eif: "2003-01-31",
+          eu_reference_from: "2003-01-31",
+          eu_reference_until: null,
+          note: "Voimassa oleva EU-viite (OJ L 188, 16.7.2008). Ei muutettu tähän päivään mennessä."
+        }
+      ]
+    },
+    R17: {
+      title: "E-sääntö 17 — Istuimet, kiinnityspisteet, pääntuet",
+      versions: [
+        {
+          label: "08-sarja",
+          unece_eif: "2009-07-22",
+          eu_reference_from: "2010-08-31",
+          eu_reference_until: "2022-08-16",
+          note: "EU:n alkuperäinen viite (OJ L 230, 31.8.2010), voimassa asetuksen (EU) 2019/2144 alusta."
+        },
+        {
+          label: "09-sarja",
+          unece_eif: "2019-05-28",
+          eu_reference_from: "2022-08-16",
+          eu_reference_until: null,
+          note: "Nykyinen EU-viite, vaihdettu asetuksella (EU) 2022/1398 (OJ L 266, 18.10.2019)."
+        }
+      ]
+    },
+    R80: {
+      title: "E-sääntö 80 — Linja-autojen istuimet",
+      versions: [
+        {
+          label: "03-sarja (alkuperäinen teksti)",
+          unece_eif: "2012-08-03",
+          eu_reference_from: "2013-08-24",
+          eu_reference_until: "2022-08-16",
+          note: "EU:n alkuperäinen viite (OJ L 226, 24.8.2013), voimassa asetuksen (EU) 2019/2144 alusta. Koskee M2/M3-luokkia."
+        },
+        {
+          label: "03-sarja (päivitetty teksti, sis. myöhemmät täydennykset)",
+          unece_eif: "2018-02-20",
+          eu_reference_from: "2022-08-16",
+          eu_reference_until: null,
+          note: "Sarjanumero pysyi samana (03), mutta EU-viite päivitettiin uudempaan täydennysversioon asetuksella (EU) 2022/1398 (OJ L 266, 18.10.2019). Tarkka täydennysnumero on arvio YK:n tallettajailmoitusten adoptiopäivien perusteella (treaties.un.org), ei suoraan GAR:n täydennystasolta."
+        }
+      ]
+    },
+    R14: {
+      title: "E-sääntö 14 — Turvavöiden kiinnityspisteet",
+      versions: [
+        {
+          label: "07-sarja",
+          unece_eif: "2009-07-22",
+          eu_reference_from: "2015-08-19",
+          eu_reference_until: "2022-08-16",
+          note: "EU:n alkuperäinen viite (OJ L 218, 19.8.2015), voimassa asetuksen (EU) 2019/2144 alusta."
+        },
+        {
+          label: "09-sarja",
+          unece_eif: "2018-12-29",
+          eu_reference_from: "2022-08-16",
+          eu_reference_until: null,
+          note: "Nykyinen EU-viite, vaihdettu asetuksella (EU) 2022/1398 (OJ L 324, 13.12.2019)."
+        }
+      ]
+    },
+    R16: {
+      title: "E-sääntö 16 — Turvavyöt ja turvajärjestelmät",
+      versions: [
+        {
+          label: "07-sarja",
+          unece_eif: "2017-06-22",
+          eu_reference_from: "2018-04-27",
+          eu_reference_until: null,
+          note: "EU:n viite koko ajan asetuksen (EU) 2019/2144 voimaantulosta lähtien (OJ L 109, 27.4.2018); ei muutettu asetuksella (EU) 2022/1398."
+        }
+      ]
+    },
+    R126: {
+      title: "E-sääntö 126 — Tilanjakojärjestelmät",
+      versions: [
+        {
+          label: "Alkuperäinen versio (00)",
+          unece_eif: "2007-11-09",
+          eu_reference_from: "2020-02-07",
+          eu_reference_until: null,
+          note: "Ei koskaan muutettu muutossarjalla. EU:n julkaisu OJ L 35, 7.2.2020. Vapaaehtoinen varuste (koskee vain jos asennettu)."
+        }
+      ]
+    },
+    R145: {
+      title: "E-sääntö 145 — Lasten turvajärjestelmien kiinnityspisteet",
+      versions: [
+        {
+          label: "Alkuperäinen versio (00)",
+          unece_eif: "2019-06-01",
+          eu_reference_from: "2019-12-13",
+          eu_reference_until: null,
+          note: "Ei muutettu toistaiseksi. EU:n julkaisu OJ L 324, 13.12.2019. UNECE-EIF arvioitu, ei täsmällisesti vahvistettu."
+        }
+      ]
+    },
+    R44: {
+      title: "E-sääntö 44 — Lasten turvajärjestelmät",
+      versions: [
+        {
+          label: "04-sarja (alkuperäinen teksti)",
+          unece_eif: "2016-09-30",
+          eu_reference_from: "2016-09-30",
+          eu_reference_until: "2022-08-16",
+          note: "EU:n alkuperäinen viittaus (OJ L 265, 30.9.2016), voimassa asetuksen (EU) 2019/2144 alusta."
+        },
+        {
+          label: "04-sarja (päivitetty teksti, sis. täydennykset 17–18)",
+          unece_eif: "2020-09-01",
+          eu_reference_from: "2022-08-16",
+          eu_reference_until: null,
+          note: "Nykyinen EU-viite (OJ L 285, 1.9.2020), otettu käyttöön asetuksella (EU) 2022/1398. Huom: UN R44 on vaiheittain poistumassa käytöstä UN R129:n tieltä."
+        }
+      ]
+    },
+    R129: {
+      title: "E-sääntö 129 — Parannetut lasten turvajärjestelmät (i-Size)",
+      versions: [
+        {
+          label: "Alkuperäinen versio (00)",
+          unece_eif: "2013-06-01",
+          eu_reference_from: "2014-03-29",
+          eu_reference_until: null,
+          note: "EU:n viite koko ajan (OJ L 97, 29.3.2014); ei muutettu, vaikka UNECE-tasolla on hyväksytty jo 01–03-sarjat."
+        }
+      ]
+    },
+    R93: {
+      title: "E-sääntö 93 — Etualleajosuojaus",
+      versions: [
+        {
+          label: "Alkuperäinen versio (00)",
+          unece_eif: "1994-02-27",
+          eu_reference_from: "2010-07-17",
+          eu_reference_until: null,
+          note: "EU:n viite koko ajan (OJ L 185, 17.7.2010). UNECE hyväksyi lisäksi muutoksen 2021 ja valmistelee täydennystä 2, mutta EU ei ole päivittänyt viitettään."
+        }
+      ]
+    },
+    R58: {
+      title: "E-sääntö 58 — Taka-alleajosuojaus",
+      versions: [
+        {
+          label: "02-sarja",
+          unece_eif: "2008-07-11",
+          eu_reference_from: "2008-07-11",
+          eu_reference_until: "2019-02-20",
+          note: "Aiempi sarja"
+        },
+        {
+          label: "03-sarja",
+          unece_eif: "2016-06-18",
+          eu_reference_from: "2019-02-20",
+          eu_reference_until: null,
+          note: "EU:n nykyinen ja koko ajan käytössä ollut viite (OJ L 49, 20.2.2019); ei muutettu asetuksella (EU) 2022/1398."
+        }
+      ]
+    },
+    R73: {
+      title: "E-sääntö 73 — Sivusuojaus",
+      versions: [
+        {
+          label: "01-sarja",
+          unece_eif: "2012-05-08",
+          eu_reference_from: "2012-05-08",
+          eu_reference_until: null,
+          note: "EU:n viite koko ajan (OJ L 122, 8.5.2012). UNECE on jo hyväksynyt 02-sarjan (n. 2025), mutta EU ei ole vielä ottanut sitä viitteeksi."
+        }
+      ]
+    },
+    R34: {
+      title: "E-sääntö 34 — Polttoainesäiliön turvallisuus / takatörmäys",
+      versions: [
+        {
+          label: "02-sarja, täydennys 3",
+          unece_eif: "2009-10-24",
+          eu_reference_from: "2009-10-24",
+          eu_reference_until: "2016-08-26",
+          note: "Aiempi sarja"
+        },
+        {
+          label: "03-sarja",
+          unece_eif: "2016-08-26",
+          eu_reference_from: "2016-08-26",
+          eu_reference_until: null,
+          note: "EU:n nykyinen viite (OJ L 231, 26.8.2016), koskee sekä A14 (polttoainesäiliön turvallisuus) että A27 (takatörmäys) -kohtia; ei muutettu asetuksella (EU) 2022/1398. UNECE on jo 04-sarjassa, mutta EU ei ole päivittänyt viitettään."
+        }
+      ]
+    }
+  };
+
+  const results = document.getElementById("results");
+  const form = document.getElementById("lookup-form");
+
+  function formatFi(iso) {
+    if (!iso) return "—";
+    const [y, m, d] = iso.split("-");
+    return `${parseInt(d, 10)}.${parseInt(m, 10)}.${y}`;
+  }
+
+  function findApplicable(reg, dateIso) {
+    const candidates = reg.versions.filter(v => {
+      if (v.eu_reference_from > dateIso) return false;
+      if (v.eu_reference_until && v.eu_reference_until <= dateIso) return false;
+      return true;
+    });
+    if (candidates.length === 0) return null;
+    return candidates.reduce((a, b) => (a.eu_reference_from > b.eu_reference_from ? a : b));
+  }
+
+  function renderCard(key, reg, dateIso) {
+    const match = findApplicable(reg, dateIso);
+    const earliest = reg.versions.reduce((a, b) => (a.eu_reference_from < b.eu_reference_from ? a : b));
+
+    if (!match) {
+      return `
+        <div class="card">
+          <p class="reg-code">${key}</p>
+          <h2>${reg.title}</h2>
+          <p class="note">
+            Ei tunnettua EU-viitettä tälle päivämäärälle. Varhaisin tässä rekisterissä
+            tunnettu EU-viite alkaa ${formatFi(earliest.eu_reference_from)}
+            (${earliest.label}).
+          </p>
+          <span class="tag warn">Ei tulosta</span>
+        </div>`;
+    }
+
+    const current = !match.eu_reference_until;
+
+    return `
+      <div class="card">
+        <p class="reg-code">${key}</p>
+        <h2>${reg.title}</h2>
+        <dl>
+          <div class="datum"><dt>Muutossarja</dt><dd>${match.label}</dd></div>
+          <div class="datum"><dt>UNECE-voimaantulo</dt><dd>${formatFi(match.unece_eif)}</dd></div>
+          <div class="datum"><dt>EU-viite alkaen</dt><dd>${formatFi(match.eu_reference_from)}</dd></div>
+          <div class="datum"><dt>EU-viite päättyi</dt><dd>${match.eu_reference_until ? formatFi(match.eu_reference_until) : "voimassa"}</dd></div>
+        </dl>
+        <p class="note">${match.note}</p>
+        <span class="tag ${current ? "ok" : "warn"}">${current ? "Nykyinen EU-viite" : "Silloin voimassa ollut EU-viite"}</span>
+      </div>`;
+  }
+
+  function render(dateIso) {
+    if (!dateIso) {
+      results.innerHTML = `<div class="empty-state">Valitse päivämäärä ja paina Hae.</div>`;
+      return;
+    }
+    const cards = Object.entries(REGULATIONS)
+      .map(([key, reg]) => renderCard(key, reg, dateIso))
+      .join("");
+    results.innerHTML = `<div class="results">${cards}</div>`;
+  }
+
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const val = document.getElementById("entry-date").value;
+    render(val);
+  });
+
+  render(null);
+</script>
+</body>
+</html>
