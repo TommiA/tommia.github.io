@@ -243,14 +243,15 @@
 
   <div class="ref-line">
     <span>E-sääntörekisteri · voimassaolohaku</span>
-    <span>Kattaa: R21,R17,R80,R14,R16,R126,R145,R44,R129,R93,R58,R73,R34</span>
+    <span>Kattaa koko A-osion: A1–A27 erillisinä kohtina (24 riviä)</span>
   </div>
 
   <h1>Mikä sääntöversio koski ajoneuvoasi?</h1>
   <p class="lede">
     Syötä ajoneuvon käyttöönotto- tai rekisteröintipäivä. Työkalu hakee, mikä muutossarja
-    kustakin katetusta E-säännöstä oli kyseisenä päivänä EU-tyyppihyväksynnässä voimassa
-    oleva viite. Kattaa nyt 13 E-sääntöä Taulukko 1:n A-osiosta.
+    kustakin katetusta E-säännöstä (Taulukko 1:n A1–A27, pl. A28 eCall joka on erikseen)
+    oli kyseisenä päivänä EU-tyyppihyväksynnässä voimassa oleva viite. A14 ja A27 näkyvät
+    omina kortteinaan, vaikka molemmat perustuvat E-sääntöön 34 — niillä on eri EU-soveltamispäivät.
   </p>
 
   <form id="lookup-form">
@@ -459,8 +460,8 @@
         }
       ]
     },
-    R34: {
-      title: "E-sääntö 34 — Polttoainesäiliön turvallisuus / takatörmäys",
+    R34_A14: {
+      title: "E-sääntö 34 — A14 Polttoainesäiliön turvallisuus",
       versions: [
         {
           label: "02-sarja, täydennys 3",
@@ -474,7 +475,210 @@
           unece_eif: "2016-08-26",
           eu_reference_from: "2016-08-26",
           eu_reference_until: null,
-          note: "EU:n nykyinen viite (OJ L 231, 26.8.2016), koskee sekä A14 (polttoainesäiliön turvallisuus) että A27 (takatörmäys) -kohtia; ei muutettu asetuksella (EU) 2022/1398. UNECE on jo 04-sarjassa, mutta EU ei ole päivittänyt viitettään."
+          note: "EU:n nykyinen viite (OJ L 231, 26.8.2016); ei muutettu asetuksella (EU) 2022/1398. Soveltamispäivä: koodi A — vain rekisteröinnin/komponenttien kielto 6.7.2022, ei erillistä tyyppihyväksynnän epäämispäivää."
+        }
+      ]
+    },
+    R34_A27: {
+      title: "E-sääntö 34 — A27 Takatörmäys",
+      versions: [
+        {
+          label: "02-sarja, täydennys 3",
+          unece_eif: "2009-10-24",
+          eu_reference_from: "2009-10-24",
+          eu_reference_until: "2016-08-26",
+          note: "Aiempi sarja"
+        },
+        {
+          label: "03-sarja",
+          unece_eif: "2016-08-26",
+          eu_reference_from: "2016-08-26",
+          eu_reference_until: null,
+          note: "EU:n nykyinen viite (OJ L 231, 26.8.2016); ei muutettu asetuksella (EU) 2022/1398. Soveltamispäivä: koodi B — tyyppihyväksynnän epäämispäivä 6.7.2022, rekisteröintikielto vasta 7.7.2024. Koskee M1 (≤3 500 kg) ja N1."
+        }
+      ]
+    },
+    R67: {
+      title: "E-sääntö 67 — Nestekaasun turvallisuus",
+      versions: [
+        {
+          label: "01-sarja",
+          unece_eif: "2007-02-02",
+          eu_reference_from: "2016-10-20",
+          eu_reference_until: null,
+          note: "EU:n viite koko ajan (OJ L 285, 20.10.2016); ei muutettu asetuksella (EU) 2022/1398. UNECE valmistelee jo 03-sarjaa."
+        }
+      ]
+    },
+    R110: {
+      title: "E-sääntö 110 — CNG/LNG-turvallisuus",
+      versions: [
+        {
+          label: "01-sarja",
+          unece_eif: "2015-06-30",
+          eu_reference_from: "2015-06-30",
+          eu_reference_until: null,
+          note: "EU:n viite koko ajan (OJ L 166, 30.6.2015); ei muutettu asetuksella (EU) 2022/1398. UNECE on jo 04-sarjassa."
+        }
+      ]
+    },
+    R134: {
+      title: "E-sääntö 134 — Vetyajoneuvojen turvallisuus",
+      versions: [
+        {
+          label: "Alkuperäinen versio (00)",
+          unece_eif: "2015-06-15",
+          eu_reference_from: "2019-05-17",
+          eu_reference_until: null,
+          note: "EU:n viite koko ajan (OJ L 129, 17.5.2019); ei muutettu, vaikka UNECE on jo 03-sarjassa."
+        }
+      ]
+    },
+    R100: {
+      title: "E-sääntö 100 — Käytönaikainen sähköturvallisuus",
+      versions: [
+        {
+          label: "02-sarja",
+          unece_eif: "2013-07-15",
+          eu_reference_from: "2018-11-28",
+          eu_reference_until: null,
+          note: "EU:n viite koko ajan (OJ L 302, 28.11.2018); ei muutettu, vaikka UNECE on jo 05-sarjassa (2025)."
+        }
+      ]
+    },
+    R94: {
+      title: "E-sääntö 94 — Limittäinen etutörmäys",
+      versions: [
+        {
+          label: "03-sarja",
+          unece_eif: "2018-02-08",
+          eu_reference_from: "2018-02-08",
+          eu_reference_until: "2022-08-16",
+          note: "EU:n alkuperäinen viite, koski vain M1-luokkaa"
+        },
+        {
+          label: "04-sarja",
+          unece_eif: "2021-11-05",
+          eu_reference_from: "2022-08-16",
+          eu_reference_until: null,
+          note: "Nykyinen EU-viite, vaihdettu asetuksella (EU) 2022/1398 (OJ L 392, 5.11.2021); laajennettu N1-luokkaan"
+        }
+      ]
+    },
+    R95: {
+      title: "E-sääntö 95 — Sivutörmäys",
+      versions: [
+        {
+          label: "03-sarja",
+          unece_eif: "2015-07-10",
+          eu_reference_from: "2015-07-10",
+          eu_reference_until: "2022-08-16",
+          note: "EU:n alkuperäinen viite"
+        },
+        {
+          label: "05-sarja",
+          unece_eif: "2021-11-05",
+          eu_reference_from: "2022-08-16",
+          eu_reference_until: null,
+          note: "Nykyinen EU-viite, vaihdettu asetuksella (EU) 2022/1398 (OJ L 392, 5.11.2021). UNECE on jo valmistellut 06-sarjaa."
+        }
+      ]
+    },
+    R137: {
+      title: "E-sääntö 137 — Kohtisuora etutörmäys",
+      versions: [
+        {
+          label: "01-sarja",
+          unece_eif: "2016-12-17",
+          eu_reference_from: "2016-12-17",
+          eu_reference_until: "2022-08-16",
+          note: "EU:n alkuperäinen viite, koski vain M1-luokkaa"
+        },
+        {
+          label: "02-sarja",
+          unece_eif: "2021-06-09",
+          eu_reference_from: "2022-08-16",
+          eu_reference_until: null,
+          note: "Nykyinen EU-viite, vaihdettu asetuksella (EU) 2022/1398 (OJ L 392, 5.11.2021); laajennettu N1-luokkaan. UNECE on jo 03-sarjassa."
+        }
+      ]
+    },
+    R12: {
+      title: "E-sääntö 12 — Ohjauslaitteen käyttäytyminen törmäyksessä",
+      versions: [
+        {
+          label: "04-sarja",
+          unece_eif: "2011-06-23",
+          eu_reference_from: "2013-03-27",
+          eu_reference_until: null,
+          note: "EU:n viite koko ajan (OJ L 89, 27.3.2013); ei muutettu, vaikka UNECE on jo 05-sarjassa (2023)."
+        }
+      ]
+    },
+    R114: {
+      title: "E-sääntö 114 — Varaosana toimitettava turvatyyny",
+      versions: [
+        {
+          label: "Alkuperäinen versio (00)",
+          unece_eif: "2003-02-01",
+          eu_reference_from: "2006-12-27",
+          eu_reference_until: null,
+          note: "EU:n viite koko ajan (OJ L 373, 27.12.2006); ei muutettu, vaikka UNECE hyväksyi täydennyksen 2025."
+        }
+      ]
+    },
+    R29: {
+      title: "E-sääntö 29 — Ohjaamoon kohdistuva törmäys",
+      versions: [
+        {
+          label: "03-sarja (alkuperäinen teksti)",
+          unece_eif: "2011-01-30",
+          eu_reference_from: "2010-11-20",
+          eu_reference_until: "2022-08-16",
+          note: "EU:n alkuperäinen viite (OJ L 304, 20.11.2010)"
+        },
+        {
+          label: "03-sarja (päivitetty teksti)",
+          unece_eif: "2011-01-30",
+          eu_reference_from: "2022-08-16",
+          eu_reference_until: null,
+          note: "Sarjanumero pysyi samana, EU-viite päivitetty asetuksella (EU) 2022/1398 (OJ L 283, 5.11.2019)"
+        }
+      ]
+    },
+    R135: {
+      title: "E-sääntö 135 — Pylvässivutörmäys",
+      versions: [
+        {
+          label: "01-sarja",
+          unece_eif: "2020-04-03",
+          eu_reference_from: "2020-04-03",
+          eu_reference_until: null,
+          note: "EU:n viite koko ajan (OJ L 103, 3.4.2020); ei muutettu, vaikka UNECE on jo 02-sarjassa."
+        }
+      ]
+    },
+    "EU2021/535": {
+      title: "A18 — Vetyjärjestelmien materiaalivaatimukset (EU-asetus, ei UN-sääntö)",
+      versions: [
+        {
+          label: "Asetus (EU) 2021/535, liite XIV",
+          unece_eif: null,
+          eu_reference_from: "2022-08-16",
+          eu_reference_until: null,
+          note: "Ei UN-sääntö, lisätty asetuksella (EU) 2022/1398."
+        }
+      ]
+    },
+    "EU2015/758": {
+      title: "A28 — eCall (EU-asetus, ei UN-sääntö)",
+      versions: [
+        {
+          label: "Asetus (EU) 2015/758",
+          unece_eif: null,
+          eu_reference_from: "2018-03-31",
+          eu_reference_until: null,
+          note: "Ei kuulu asetuksen (EU) 2019/2144 A-D-koodistoon; oma erillinen soveltamispäivä."
         }
       ]
     }
