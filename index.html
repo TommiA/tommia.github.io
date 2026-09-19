@@ -243,15 +243,14 @@
 
   <div class="ref-line">
     <span>E-sääntörekisteri · voimassaolohaku</span>
-    <span>Kattaa koko A-osion: A1–A27 erillisinä kohtina (24 riviä)</span>
+    <span>Kattaa A-osion kokonaan (24 riviä) ja B-osion kokonaan (13 riviä)</span>
   </div>
 
   <h1>Mikä sääntöversio koski ajoneuvoasi?</h1>
   <p class="lede">
     Syötä ajoneuvon käyttöönotto- tai rekisteröintipäivä. Työkalu hakee, mikä muutossarja
-    kustakin katetusta E-säännöstä (Taulukko 1:n A1–A27, pl. A28 eCall joka on erikseen)
-    oli kyseisenä päivänä EU-tyyppihyväksynnässä voimassa oleva viite. A14 ja A27 näkyvät
-    omina kortteinaan, vaikka molemmat perustuvat E-sääntöön 34 — niillä on eri EU-soveltamispäivät.
+    kustakin katetusta E-säännöstä (Taulukko 1:n osiot A ja B) oli kyseisenä päivänä
+    EU-tyyppihyväksynnässä voimassa oleva viite.
   </p>
 
   <form id="lookup-form">
@@ -680,6 +679,92 @@
           eu_reference_until: null,
           note: "Ei kuulu asetuksen (EU) 2019/2144 A-D-koodistoon; oma erillinen soveltamispäivä."
         }
+      ]
+    },
+    B1_B2_R127: {
+      title: "B1/B2 — Jalankulkijoiden suojaus (E-sääntö 127)",
+      versions: [
+        {
+          label: "02-sarja",
+          unece_eif: null,
+          eu_reference_from: "2019-03-25",
+          eu_reference_until: "2023-06-01",
+          note: "Todennäköinen EU:n alkuperäinen viittaus (OJ L 82, 25.3.2019)"
+        },
+        {
+          label: "03-sarja",
+          unece_eif: "2023-01-04",
+          eu_reference_from: "2023-06-01",
+          eu_reference_until: null,
+          note: "Kehitetty nimenomaan yhdenmukaistamaan (EU) 2019/2144:n vaatimusten kanssa. Tarkkaa EU-soveltamispäivää ei vahvistettu tässä haussa - arvio."
+        }
+      ]
+    },
+    B3_2021_535_XII: {
+      title: "B3 — Etusuojajärjestelmä (EU-asetus, ei UN-sääntö)",
+      versions: [
+        { label: "(EU) 2021/535, liite XII", unece_eif: null, eu_reference_from: "2022-07-06", eu_reference_until: null, note: "Ei UN-sääntö." }
+      ]
+    },
+    B4_C9_R152: {
+      title: "B4/C9 — Kevyiden ajoneuvojen AEBS (E-sääntö 152)",
+      versions: [
+        { label: "Alkuperäinen versio", unece_eif: "2020-11-04", eu_reference_from: "2020-11-04", eu_reference_until: "2023-06-01", note: "Uusi sääntö" },
+        { label: "02-sarja", unece_eif: "2023-06-01", eu_reference_from: "2023-06-01", eu_reference_until: null, note: "Nykyinen versio (C/P/B-merkinnät); tarkkaa EU-soveltamispäivää ei vahvistettu - arvio. Koskee myös C9-kohtaa." }
+      ]
+    },
+    B5_R159: {
+      title: "B5 — Törmäysvaroittimet jalankulkijoille/pyöräilijöille (E-sääntö 159)",
+      versions: [
+        { label: "Alkuperäinen versio", unece_eif: "2021-06-10", eu_reference_from: "2022-08-16", eu_reference_until: null, note: "Uusi sääntö, lisätty EU:n liitteeseen I asetuksella (EU) 2022/1398." }
+      ]
+    },
+    B6_R151: {
+      title: "B6 — Kuolleen kulman valvontajärjestelmä (E-sääntö 151)",
+      versions: [
+        { label: "Alkuperäinen versio", unece_eif: "2019-11-15", eu_reference_from: "2019-11-15", eu_reference_until: null, note: "Ei muutossarjoja." }
+      ]
+    },
+    B7_R158: {
+      title: "B7 — Peruutustutka (E-sääntö 158)",
+      versions: [
+        { label: "Alkuperäinen versio", unece_eif: "2021-06-10", eu_reference_from: "2022-08-16", eu_reference_until: null, note: "Uusi sääntö, lisätty EU:n liitteeseen I asetuksella (EU) 2022/1398." }
+      ]
+    },
+    B8_R125: {
+      title: "B8 — Näkyvyys eteen (E-sääntö 125)",
+      versions: [
+        { label: "01-sarja", unece_eif: "2015-11-01", eu_reference_from: "2015-11-01", eu_reference_until: null, note: "Todennäköinen EU:n viite; 02-sarja (FVA, 2021) ei ole varmuudella vahvistettu EU:ssa." }
+      ]
+    },
+    B9_R167: {
+      title: "B9 — Suora näkyvyys raskaista hyötyajoneuvoista (E-sääntö 167)",
+      versions: [
+        { label: "01-sarja", unece_eif: "2025-06-12", eu_reference_from: "2026-02-16", eu_reference_until: null, note: "UUSI löydös: lisätty EU:n liitteeseen I vasta uudella, aiemmin havaitsemattomalla delegoidulla asetuksella (OJ 2026/272, julkaistu 16.2.2026) - kolmas päivitysaalto 2019/2022/2026." }
+      ]
+    },
+    B10_R43: {
+      title: "B10 — Turvalasit (E-sääntö 43)",
+      versions: [
+        { label: "01-sarja", unece_eif: null, eu_reference_from: "2019-12-16", eu_reference_until: null, note: "EU:n viite; 02-sarja vasta ehdotusvaiheessa (2023)." }
+      ]
+    },
+    B11_2021_535_VI: {
+      title: "B11 — Huurteen-/huurunpoistolaitteet (EU-asetus, ei UN-sääntö)",
+      versions: [
+        { label: "(EU) 2021/535, liite VI", unece_eif: null, eu_reference_from: "2022-07-06", eu_reference_until: null, note: "Ei UN-sääntö." }
+      ]
+    },
+    B12_2021_535_IV: {
+      title: "B12 — Tuulilasin pyyhin-/pesinjärjestelmät (EU-asetus, ei UN-sääntö)",
+      versions: [
+        { label: "(EU) 2021/535, liite IV", unece_eif: null, eu_reference_from: "2022-07-06", eu_reference_until: null, note: "Ei UN-sääntö." }
+      ]
+    },
+    B13_R46: {
+      title: "B13 — Epäsuoran näkemän tarjoavat laitteet (E-sääntö 46)",
+      versions: [
+        { label: "04-sarja", unece_eif: "2013-07-15", eu_reference_from: "2013-07-15", eu_reference_until: null, note: "Todennäköinen EU:n viite koko ajan; UNECE on jo 07-sarjassa (2026)." }
       ]
     }
   };
