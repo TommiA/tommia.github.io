@@ -124,7 +124,18 @@
     min-width: 190px;
   }
 
+  select {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 1rem;
+    padding: 0.55rem 0.6rem;
+    border: 1px solid var(--line);
+    background: var(--paper);
+    color: var(--ink);
+    min-width: 150px;
+  }
+
   input[type="date"]:focus-visible,
+  select:focus-visible,
   button:focus-visible {
     outline: 2px solid var(--focus);
     outline-offset: 2px;
@@ -277,6 +288,22 @@
       <label for="entry-date">Käyttöönottopäivä</label>
       <input type="date" id="entry-date" name="entry-date" required>
     </div>
+    <div class="field">
+      <label for="vehicle-category">Ajoneuvoluokka</label>
+      <select id="vehicle-category" name="vehicle-category">
+        <option value="">Kaikki luokat</option>
+        <option value="M1">M1</option>
+        <option value="M2">M2</option>
+        <option value="M3">M3</option>
+        <option value="N1">N1</option>
+        <option value="N2">N2</option>
+        <option value="N3">N3</option>
+        <option value="O1">O1</option>
+        <option value="O2">O2</option>
+        <option value="O3">O3</option>
+        <option value="O4">O4</option>
+      </select>
+    </div>
     <button type="submit">Hae</button>
   </form>
 
@@ -302,6 +329,7 @@
     R21: {
       section: "A",
       order: 1,
+      categories: ["M1"],
       title: "E-sääntö 21 — Sisävarusteet",
       versions: [
         {
@@ -316,6 +344,7 @@
     R17: {
       section: "A",
       order: 2,
+      categories: ["M1", "M2", "M3", "N1", "N2", "N3"],
       title: "E-sääntö 17 — Istuimet, kiinnityspisteet, pääntuet",
       versions: [
         {
@@ -337,6 +366,7 @@
     R80: {
       section: "A",
       order: 3,
+      categories: ["M2", "M3"],
       title: "E-sääntö 80 — Linja-autojen istuimet",
       versions: [
         {
@@ -358,6 +388,7 @@
     R14: {
       section: "A",
       order: 4,
+      categories: ["M1", "M2", "M3", "N1", "N2", "N3"],
       title: "E-sääntö 14 — Turvavöiden kiinnityspisteet",
       versions: [
         {
@@ -379,6 +410,7 @@
     R16: {
       section: "A",
       order: 5,
+      categories: ["M1", "M2", "M3", "N1", "N2", "N3"],
       title: "E-sääntö 16 — Turvavyöt ja turvajärjestelmät",
       versions: [
         {
@@ -393,6 +425,7 @@
     R126: {
       section: "A",
       order: 7,
+      categories: ["M1"],
       title: "E-sääntö 126 — Tilanjakojärjestelmät",
       versions: [
         {
@@ -407,6 +440,7 @@
     R145: {
       section: "A",
       order: 8,
+      categories: ["M1", "M2", "M3", "N1", "N2", "N3"],
       title: "E-sääntö 145 — Lasten turvajärjestelmien kiinnityspisteet",
       versions: [
         {
@@ -421,6 +455,7 @@
     R44: {
       section: "A",
       order: 9,
+      categories: ["M1", "M2", "M3", "N1", "N2", "N3"],
       title: "E-sääntö 44 — Lasten turvajärjestelmät",
       versions: [
         {
@@ -442,6 +477,7 @@
     R129: {
       section: "A",
       order: 10,
+      categories: ["M1", "M2", "M3", "N1", "N2", "N3"],
       title: "E-sääntö 129 — Parannetut lasten turvajärjestelmät (i-Size)",
       versions: [
         {
@@ -456,6 +492,7 @@
     R93: {
       section: "A",
       order: 11,
+      categories: ["N2", "N3"],
       title: "E-sääntö 93 — Etualleajosuojaus",
       versions: [
         {
@@ -470,6 +507,7 @@
     R58: {
       section: "A",
       order: 12,
+      categories: ["M1", "M2", "M3", "N1", "N2", "N3", "O1", "O2", "O3", "O4"],
       title: "E-sääntö 58 — Taka-alleajosuojaus",
       versions: [
         {
@@ -491,6 +529,7 @@
     R73: {
       section: "A",
       order: 13,
+      categories: ["N2", "N3", "O3", "O4"],
       title: "E-sääntö 73 — Sivusuojaus",
       versions: [
         {
@@ -505,6 +544,7 @@
     R34_A14: {
       section: "A",
       order: 14,
+      categories: ["M1", "M2", "M3", "N1", "N2", "N3", "O1", "O2", "O3", "O4"],
       title: "E-sääntö 34 — A14 Polttoainesäiliön turvallisuus",
       versions: [
         {
@@ -526,6 +566,7 @@
     R34_A27: {
       section: "A",
       order: 27,
+      categories: ["M1", "N1"],
       title: "E-sääntö 34 — A27 Takatörmäys",
       versions: [
         {
@@ -547,6 +588,7 @@
     R67: {
       section: "A",
       order: 15,
+      categories: ["M1", "M2", "M3", "N1", "N2", "N3"],
       title: "E-sääntö 67 — Nestekaasun turvallisuus",
       versions: [
         {
@@ -561,6 +603,7 @@
     R110: {
       section: "A",
       order: 16,
+      categories: ["M1", "M2", "M3", "N1", "N2", "N3"],
       title: "E-sääntö 110 — CNG/LNG-turvallisuus",
       versions: [
         {
@@ -575,6 +618,7 @@
     R134: {
       section: "A",
       order: 17,
+      categories: ["M1", "M2", "M3", "N1", "N2", "N3"],
       title: "E-sääntö 134 — Vetyajoneuvojen turvallisuus",
       versions: [
         {
@@ -589,6 +633,7 @@
     R100: {
       section: "A",
       order: 19,
+      categories: ["M1", "M2", "M3", "N1", "N2", "N3"],
       title: "E-sääntö 100 — Käytönaikainen sähköturvallisuus",
       versions: [
         {
@@ -603,6 +648,7 @@
     R94: {
       section: "A",
       order: 20,
+      categories: ["M1", "N1"],
       title: "E-sääntö 94 — Limittäinen etutörmäys",
       versions: [
         {
@@ -624,6 +670,7 @@
     R95: {
       section: "A",
       order: 25,
+      categories: ["M1", "N1"],
       title: "E-sääntö 95 — Sivutörmäys",
       versions: [
         {
@@ -645,6 +692,7 @@
     R137: {
       section: "A",
       order: 21,
+      categories: ["M1", "N1"],
       title: "E-sääntö 137 — Kohtisuora etutörmäys",
       versions: [
         {
@@ -666,6 +714,7 @@
     R12: {
       section: "A",
       order: 22,
+      categories: ["M1", "N1"],
       title: "E-sääntö 12 — Ohjauslaitteen käyttäytyminen törmäyksessä",
       versions: [
         {
@@ -680,6 +729,7 @@
     R114: {
       section: "A",
       order: 23,
+      categories: ["M1", "N1"],
       title: "E-sääntö 114 — Varaosana toimitettava turvatyyny",
       versions: [
         {
@@ -694,6 +744,7 @@
     R29: {
       section: "A",
       order: 24,
+      categories: ["N1", "N2", "N3"],
       title: "E-sääntö 29 — Ohjaamoon kohdistuva törmäys",
       versions: [
         {
@@ -715,6 +766,7 @@
     R135: {
       section: "A",
       order: 26,
+      categories: ["M1", "N1"],
       title: "E-sääntö 135 — Pylvässivutörmäys",
       versions: [
         {
@@ -729,6 +781,7 @@
     "EU2021/535": {
       section: "A",
       order: 18,
+      categories: ["M1", "M2", "M3", "N1", "N2", "N3"],
       title: "A18 — Vetyjärjestelmien materiaalivaatimukset (EU-asetus, ei UN-sääntö)",
       versions: [
         {
@@ -743,6 +796,7 @@
     "EU2015/758": {
       section: "A",
       order: 28,
+      categories: ["M1", "N1"],
       title: "A28 — eCall (EU-asetus, ei UN-sääntö)",
       versions: [
         {
@@ -757,6 +811,7 @@
     B1_B2_R127: {
       section: "B",
       order: 1,
+      categories: ["M1", "N1"],
       title: "B1/B2 — Jalankulkijoiden suojaus (E-sääntö 127)",
       versions: [
         {
@@ -778,6 +833,7 @@
     B3_2021_535_XII: {
       section: "B",
       order: 3,
+      categories: ["M1", "N1"],
       title: "B3 — Etusuojajärjestelmä (EU-asetus, ei UN-sääntö)",
       versions: [
         { label: "(EU) 2021/535, liite XII", unece_eif: null, eu_reference_from: "2022-07-06", eu_reference_until: null, note: "Ei UN-sääntö." }
@@ -786,6 +842,7 @@
     B4_C9_R152: {
       section: "B",
       order: 4,
+      categories: ["M1", "N1"],
       title: "B4/C9 — Kevyiden ajoneuvojen AEBS (E-sääntö 152)",
       versions: [
         { label: "Alkuperäinen versio", unece_eif: "2020-11-04", eu_reference_from: "2020-11-04", eu_reference_until: "2023-06-01", note: "Uusi sääntö" },
@@ -795,6 +852,7 @@
     B5_R159: {
       section: "B",
       order: 5,
+      categories: ["M2", "M3", "N2", "N3"],
       title: "B5 — Törmäysvaroittimet jalankulkijoille/pyöräilijöille (E-sääntö 159)",
       versions: [
         { label: "Alkuperäinen versio", unece_eif: "2021-06-10", eu_reference_from: "2022-08-16", eu_reference_until: null, note: "Uusi sääntö, lisätty EU:n liitteeseen I asetuksella (EU) 2022/1398." }
@@ -803,6 +861,7 @@
     B6_R151: {
       section: "B",
       order: 6,
+      categories: ["M2", "M3", "N2", "N3"],
       title: "B6 — Kuolleen kulman valvontajärjestelmä (E-sääntö 151)",
       versions: [
         { label: "Alkuperäinen versio", unece_eif: "2019-11-15", eu_reference_from: "2019-11-15", eu_reference_until: null, note: "Ei muutossarjoja." }
@@ -811,6 +870,7 @@
     B7_R158: {
       section: "B",
       order: 7,
+      categories: ["M1", "M2", "M3", "N1", "N2", "N3"],
       title: "B7 — Peruutustutka (E-sääntö 158)",
       versions: [
         { label: "Alkuperäinen versio", unece_eif: "2021-06-10", eu_reference_from: "2022-08-16", eu_reference_until: null, note: "Uusi sääntö, lisätty EU:n liitteeseen I asetuksella (EU) 2022/1398." }
@@ -819,6 +879,7 @@
     B8_R125: {
       section: "B",
       order: 8,
+      categories: ["M2", "M3", "N2", "N3"],
       title: "B8 — Näkyvyys eteen (E-sääntö 125)",
       versions: [
         { label: "01-sarja", unece_eif: "2015-11-01", eu_reference_from: "2015-11-01", eu_reference_until: null, note: "Todennäköinen EU:n viite; 02-sarja (FVA, 2021) ei ole varmuudella vahvistettu EU:ssa." }
@@ -827,6 +888,7 @@
     B9_R167: {
       section: "B",
       order: 9,
+      categories: ["N2", "N3"],
       title: "B9 — Suora näkyvyys raskaista hyötyajoneuvoista (E-sääntö 167)",
       versions: [
         { label: "01-sarja", unece_eif: "2025-06-12", eu_reference_from: "2026-02-16", eu_reference_until: null, note: "UUSI löydös: lisätty EU:n liitteeseen I vasta uudella, aiemmin havaitsemattomalla delegoidulla asetuksella (OJ 2026/272, julkaistu 16.2.2026) - kolmas päivitysaalto 2019/2022/2026." }
@@ -835,6 +897,7 @@
     B10_R43: {
       section: "B",
       order: 10,
+      categories: ["M1", "M2", "M3", "N1", "N2", "N3"],
       title: "B10 — Turvalasit (E-sääntö 43)",
       versions: [
         { label: "01-sarja", unece_eif: null, eu_reference_from: "2019-12-16", eu_reference_until: null, note: "EU:n viite; 02-sarja vasta ehdotusvaiheessa (2023)." }
@@ -843,6 +906,7 @@
     B11_2021_535_VI: {
       section: "B",
       order: 11,
+      categories: ["M1", "M2", "M3", "N1", "N2", "N3"],
       title: "B11 — Huurteen-/huurunpoistolaitteet (EU-asetus, ei UN-sääntö)",
       versions: [
         { label: "(EU) 2021/535, liite VI", unece_eif: null, eu_reference_from: "2022-07-06", eu_reference_until: null, note: "Ei UN-sääntö." }
@@ -851,6 +915,7 @@
     B12_2021_535_IV: {
       section: "B",
       order: 12,
+      categories: ["M1", "M2", "M3", "N1", "N2", "N3"],
       title: "B12 — Tuulilasin pyyhin-/pesinjärjestelmät (EU-asetus, ei UN-sääntö)",
       versions: [
         { label: "(EU) 2021/535, liite IV", unece_eif: null, eu_reference_from: "2022-07-06", eu_reference_until: null, note: "Ei UN-sääntö." }
@@ -859,6 +924,7 @@
     B13_R46: {
       section: "B",
       order: 13,
+      categories: ["M1", "M2", "M3", "N1", "N2", "N3"],
       title: "B13 — Epäsuoran näkemän tarjoavat laitteet (E-sääntö 46)",
       versions: [
         { label: "04-sarja", unece_eif: "2013-07-15", eu_reference_from: "2013-07-15", eu_reference_until: null, note: "Todennäköinen EU:n viite koko ajan; UNECE on jo 07-sarjassa (2026)." }
@@ -867,6 +933,7 @@
     C1_R79: {
       section: "C",
       order: 1,
+      categories: ["M1", "N1", "N2", "N3", "O3", "O4"],
       title: "C1 — Ohjauslaitteet (E-sääntö 79)",
       versions: [
         { label: "03-sarja", unece_eif: "2018-10-16", eu_reference_from: "2018-10-16", eu_reference_until: "2022-08-16", note: "Todennäköinen EU:n alkuperäinen viite" },
@@ -876,6 +943,7 @@
     C2_R130: {
       section: "C",
       order: 2,
+      categories: ["M2", "M3", "N2", "N3"],
       title: "C2 — Kaistavahtijärjestelmä (E-sääntö 130)",
       versions: [
         { label: "Alkuperäinen versio", unece_eif: "2013-07-09", eu_reference_from: "2013-07-09", eu_reference_until: null, note: "Todennäköinen EU:n viite koko ajan; ei muutettu." }
@@ -884,6 +952,7 @@
     C4_R13: {
       section: "C",
       order: 4,
+      categories: ["M2", "M3", "N1", "N2", "N3", "O1", "O2", "O3", "O4"],
       title: "C4 — Raskaiden ajoneuvojen jarrujärjestelmä (E-sääntö 13)",
       versions: [
         { label: "11-sarja", unece_eif: "2016-02-18", eu_reference_from: "2016-02-18", eu_reference_until: null, note: "EU:n viite koko ajan (OJ L 42, 18.2.2016); ei muutettu, vaikka UNECE on jo 13-sarjassa (2024)." }
@@ -892,6 +961,7 @@
     C4_R13H: {
       section: "C",
       order: 4,
+      categories: ["M1", "N1"],
       title: "C4 — Kevyiden ajoneuvojen jarrujärjestelmä (E-sääntö 13-H)",
       versions: [
         { label: "Alkuperäinen versio", unece_eif: "2015-12-22", eu_reference_from: "2015-12-22", eu_reference_until: null, note: "EU:n viite koko ajan (OJ L 335, 22.12.2015); ei muutossarjoja." }
@@ -900,6 +970,7 @@
     C5_R90: {
       section: "C",
       order: 5,
+      categories: ["M1", "M2", "M3", "N1", "N2", "N3", "O1", "O2", "O3", "O4"],
       title: "C5 — Jarrujärjestelmän varaosat (E-sääntö 90)",
       versions: [
         { label: "01-sarja", unece_eif: null, eu_reference_from: "2015-01-01", eu_reference_until: null, note: "Todennäköinen EU:n viite; tarkkaa EIF-päivää ei vahvistettu - arvio." }
@@ -908,6 +979,7 @@
     C6_R139: {
       section: "C",
       order: 6,
+      categories: ["M1", "N1"],
       title: "C6 — Hätäjarrutehostin (E-sääntö 139)",
       versions: [
         { label: "Alkuperäinen versio", unece_eif: "2017-01-22", eu_reference_from: "2017-01-22", eu_reference_until: null, note: "Ei muutossarjoja." }
@@ -916,6 +988,7 @@
     C7_R140: {
       section: "C",
       order: 7,
+      categories: ["M1", "N1"],
       title: "C7 — Elektroninen ajonvakautusjärjestelmä (E-sääntö 140)",
       versions: [
         { label: "Alkuperäinen versio", unece_eif: "2017-01-22", eu_reference_from: "2017-01-22", eu_reference_until: null, note: "Ei muutossarjoja." }
@@ -924,6 +997,7 @@
     C8_R131: {
       section: "C",
       order: 8,
+      categories: ["M2", "M3", "N2", "N3"],
       title: "C8 — Raskaiden hyötyajoneuvojen AEBS (E-sääntö 131)",
       versions: [
         { label: "Alkuperäinen versio", unece_eif: "2013-11-02", eu_reference_from: "2013-11-02", eu_reference_until: "2025-06-01", note: "Aiempi versio" },
@@ -933,6 +1007,7 @@
     C3_2021_646: {
       section: "C",
       order: 3,
+      categories: ["M1", "N1"],
       title: "C3 — Hätätilanteiden kaistanpitojärjestelmä (EU-asetus, ei UN-sääntö)",
       versions: [
         { label: "(EU) 2021/646", unece_eif: null, eu_reference_from: "2022-07-06", eu_reference_until: null, note: "Ei UN-sääntö." }
@@ -941,6 +1016,7 @@
     C10_R117: {
       section: "C",
       order: 10,
+      categories: ["M1", "M2", "M3", "N1", "N2", "N3", "O1", "O2", "O3", "O4"],
       title: "C10 — Renkaiden turvallisuus/ympäristö (E-sääntö 117)",
       versions: [
         { label: "02-sarja + täydennys 14", unece_eif: "2022-10-08", eu_reference_from: "2022-10-08", eu_reference_until: "2025-08-07", note: "Aiempi EU-viite" },
@@ -950,6 +1026,7 @@
     C10_R30_R54: {
       section: "C",
       order: 10,
+      categories: ["M1", "M2", "M3", "N1", "N2", "N3", "O1", "O2", "O3", "O4"],
       title: "C10 — Renkaiden perushyväksyntä (E-säännöt 30/54)",
       versions: [
         { label: "R30: 02-sarja / R54: 03-sarja", unece_eif: null, eu_reference_from: "2015-01-01", eu_reference_until: null, note: "Nykyiset sarjat; tarkkoja EIF-päiviä ei vahvistettu tässä haussa - arvio." }
@@ -958,6 +1035,7 @@
     C11_R64: {
       section: "C",
       order: 11,
+      categories: ["M1"],
       title: "C11 — Varapyörät ja run-flat (E-sääntö 64)",
       versions: [
         { label: "02-sarja", unece_eif: "2010-08-19", eu_reference_from: "2010-08-19", eu_reference_until: null, note: "EU:n viite koko ajan (OJ L 310, 26.11.2010)." }
@@ -966,6 +1044,7 @@
     C12_R108_R109: {
       section: "C",
       order: 12,
+      categories: ["M1", "M2", "M3", "N1", "N2", "N3", "O1", "O2", "O3", "O4"],
       title: "C12 — Uudelleen pinnoitetut renkaat (E-säännöt 108/109)",
       versions: [
         { label: "01-sarja (ennen täyd. 1)", unece_eif: null, eu_reference_from: "1998-06-23", eu_reference_until: "2026-01-11", note: "Aiempi EU-viite (R109 pysyy tässä koko ajan)" },
@@ -975,6 +1054,7 @@
     C13_C14_R141: {
       section: "C",
       order: 13,
+      categories: ["M1", "N1", "M2", "M3", "N2", "N3"],
       title: "C13/C14 — Rengaspaineen seuranta (E-sääntö 141)",
       versions: [
         { label: "Alkuperäinen versio", unece_eif: "2017-01-22", eu_reference_from: "2019-04-24", eu_reference_until: "2021-09-30", note: "EU sovelsi vasta uusiin tyyppeihin asetuksella (EU) 2019/543" },
@@ -984,6 +1064,7 @@
     C15_R142: {
       section: "C",
       order: 15,
+      categories: ["M1", "N1"],
       title: "C15 — Renkaiden asennus (E-sääntö 142)",
       versions: [
         { label: "Alkuperäinen versio, täydennys 1", unece_eif: "2018-10-16", eu_reference_from: "2018-10-16", eu_reference_until: null, note: "EU:n viite (OJ L 48, 21.2.2020)." }
@@ -992,6 +1073,7 @@
     C16_R124: {
       section: "C",
       order: 16,
+      categories: ["M1", "O1", "O2"],
       title: "C16 — Varaosapyörät (E-sääntö 124)",
       versions: [
         { label: "Alkuperäinen versio", unece_eif: "2006-12-27", eu_reference_from: "2006-12-27", eu_reference_until: null, note: "EU:n viite koko ajan; koskee M1/M1G/O1/O2-luokkia." }
@@ -1000,6 +1082,7 @@
     D1_R28: {
       section: "D",
       order: 1,
+      categories: ["M1", "M2", "M3", "N1", "N2", "N3"],
       title: "D1 — Äänimerkki (E-sääntö 28)",
       versions: [
         { label: "Alkuperäinen versio, täydennys 3", unece_eif: "2000-12-28", eu_reference_from: "2000-12-28", eu_reference_until: null, note: "EU:n viite koko ajan (OJ L 323, 6.12.2011); ei muutossarjoja." }
@@ -1008,6 +1091,7 @@
     D2_R10: {
       section: "D",
       order: 2,
+      categories: ["M1", "M2", "M3", "N1", "N2", "N3", "O1", "O2", "O3", "O4"],
       title: "D2 — Radiohäiriöt / EMC (E-sääntö 10)",
       versions: [
         { label: "06-sarja, täydennys 1", unece_eif: "2020-09-25", eu_reference_from: "2020-09-25", eu_reference_until: null, note: "EU:n nykyinen viite (OJ [2022/2263]); UNECE on jo 07-sarjassa." }
@@ -1016,6 +1100,7 @@
     D3_anti_theft: {
       section: "D",
       order: 3,
+      categories: ["M1", "N1"],
       title: "D3 — Suojaus luvattomalta käytöltä / hälytysjärjestelmät (E-säännöt 18/97/116)",
       versions: [
         { label: "R18: 03-sarja / R97: 01-sarja / R116: alkuperäinen", unece_eif: null, eu_reference_from: "2000-08-18", eu_reference_until: null, note: "Nykyiset EU-viitteet; R161/R162/R163 (D3:n muut säännöt) ei ehditty tutkia tarkasti." }
@@ -1024,6 +1109,7 @@
     D4_R155: {
       section: "D",
       order: 4,
+      categories: ["M1", "M2", "M3", "N1", "N2", "N3"],
       title: "D4 — Kyberturvallisuus (E-sääntö 155)",
       versions: [
         { label: "Alkuperäinen versio", unece_eif: "2021-01-22", eu_reference_from: "2021-01-22", eu_reference_until: "2025-01-10", note: "Aiempi versio" },
@@ -1033,6 +1119,7 @@
     D5_D6_R39: {
       section: "D",
       order: 5,
+      categories: ["M1", "M2", "M3", "N1", "N2", "N3"],
       title: "D5/D6 — Nopeusmittari / matkamittari (E-sääntö 39)",
       versions: [
         { label: "01-sarja, täydennys 1", unece_eif: "2017-10-10", eu_reference_from: "2017-10-10", eu_reference_until: null, note: "EU:n nykyinen viite (OJ L 302, 28.11.2018); 02-sarja ehdotettu 2025." }
@@ -1041,6 +1128,7 @@
     D7_R89: {
       section: "D",
       order: 7,
+      categories: ["M2", "M3", "N2", "N3"],
       title: "D7 — Nopeudenrajoittimet (E-sääntö 89)",
       versions: [
         { label: "Alkuperäinen versio + 2008/2010 muutokset", unece_eif: "2010-07-30", eu_reference_from: "2010-07-30", eu_reference_until: null, note: "EU:n nykyinen viite (OJ L 4, 7.1.2012); rinnalla direktiivi 92/6/ETY." }
@@ -1049,6 +1137,7 @@
     D9_R121: {
       section: "D",
       order: 9,
+      categories: ["M1", "M2", "M3", "N1", "N2", "N3"],
       title: "D9 — Hallintalaitteiden tunnistaminen (E-sääntö 121)",
       versions: [
         { label: "01-sarja", unece_eif: null, eu_reference_from: "2006-01-18", eu_reference_until: null, note: "Nykyinen sarja, täydennyksiä ainakin 8:aan asti." }
@@ -1057,6 +1146,7 @@
     D10_R122: {
       section: "D",
       order: 10,
+      categories: ["M1", "M2", "M3", "N1", "N2", "N3"],
       title: "D10 — Lämmitysjärjestelmät (E-sääntö 122)",
       versions: [
         { label: "Alkuperäinen versio", unece_eif: null, eu_reference_from: "2001-01-01", eu_reference_until: null, note: "Ei koskaan ollut muutossarjaa; 01-sarja vasta ehdotusvaiheessa (2026)." }
@@ -1065,6 +1155,7 @@
     D15_D16_R48: {
       section: "D",
       order: 15,
+      categories: ["M1", "M2", "M3", "N1", "N2", "N3", "O1", "O2", "O3", "O4"],
       title: "D15/D16 — Valaisimien asennus / hätäjarrutuksen merkkivalo (E-sääntö 48)",
       versions: [
         { label: "06-sarja", unece_eif: null, eu_reference_from: "2010-01-01", eu_reference_until: null, note: "Traficomin oma määräys viittaa nimenomaisesti 06-sarjaan; tarkka EIF-päivä ei vahvistettu - arvio." }
@@ -1073,6 +1164,7 @@
     D17_R45: {
       section: "D",
       order: 17,
+      categories: ["M1", "N1"],
       title: "D17 — Ajovalaisimien puhdistuslaitteet (E-sääntö 45)",
       versions: [
         { label: "01-sarja, täydennys 11", unece_eif: "2017-10-10", eu_reference_from: "2017-10-10", eu_reference_until: null, note: "EU:n nykyinen viite (OJ L 136, 29.4.2020)." }
@@ -1081,6 +1173,7 @@
     D11_R148: {
       section: "D",
       order: 11,
+      categories: ["M1", "M2", "M3", "N1", "N2", "N3", "O1", "O2", "O3", "O4"],
       title: "D11 — Merkkivalolaitteet (E-sääntö 148, konsolidoi R4/6/7/23/38/77/87/91)",
       versions: [
         { label: "Alkuperäinen versio, täydennys 3", unece_eif: "2021-09-30", eu_reference_from: "2021-09-30", eu_reference_until: "2023-01-04", note: "R148 korvaa uusissa hyväksynnöissä säännöt R4,6,7,23,38,77,87,91 (hyväksytty 2019); vanhat säännöt jäädytetty mutta voimassa olemassa oleville hyväksynnöille." },
@@ -1090,6 +1183,7 @@
     D12_R149: {
       section: "D",
       order: 12,
+      categories: ["M1", "M2", "M3", "N1", "N2", "N3"],
       title: "D12 — Tienvalaisulaitteet (E-sääntö 149, konsolidoi R19/31/98/112/119/123)",
       versions: [
         { label: "Alkuperäinen versio", unece_eif: "2019-11-15", eu_reference_from: "2019-11-15", eu_reference_until: null, note: "R149 korvaa uusissa hyväksynnöissä säännöt R19,31,98,112,119,123; vanhat säännöt jäädytetty. Täydennys 9 ja 01-sarja käsittelyssä 2025." }
@@ -1098,6 +1192,7 @@
     D13_R150: {
       section: "D",
       order: 13,
+      categories: ["M1", "M2", "M3", "N1", "N2", "N3", "O1", "O2", "O3", "O4"],
       title: "D13 — Heijastinlaitteet (E-sääntö 150, konsolidoi R3/R27/R69/R70)",
       versions: [
         { label: "Alkuperäinen versio, täydennys 3", unece_eif: "2021-09-30", eu_reference_from: "2021-09-30", eu_reference_until: null, note: "R150 korvaa uusissa hyväksynnöissä R3,27,69,70; R104 (heijastavat merkinnät) pysyy erillisenä, EI korvattu." }
@@ -1106,6 +1201,7 @@
     D14_R37_R99_R128: {
       section: "D",
       order: 14,
+      categories: ["M1", "M2", "M3", "N1", "N2", "N3"],
       title: "D14 — Valonlähteet (E-säännöt 37/99/128)",
       versions: [
         { label: "R37: 03-sarja / R128: alkup.+täyd.2", unece_eif: "2014-06-10", eu_reference_from: "2014-06-10", eu_reference_until: null, note: "EIVÄT korvattu R148/149/150:llä — koskevat valonlähdettä, ei valaisinyksikköä. R37 erittäin aktiivisesti täydennetty (35+ täydennystä)." }
@@ -1114,6 +1210,7 @@
     D8_2021_1958: {
       section: "D",
       order: 8,
+      categories: ["M1", "M2", "M3", "N1", "N2", "N3"],
       title: "D8 — Älykäs nopeusavustin (EU-asetus, ei UN-sääntö)",
       versions: [
         { label: "(EU) 2021/1958", unece_eif: null, eu_reference_from: "2022-07-06", eu_reference_until: null, note: "Ei UN-sääntö (ISA); ei muutettu tähän mennessä." }
@@ -1122,6 +1219,7 @@
     D18_2021_535_IX: {
       section: "D",
       order: 18,
+      categories: ["M1"],
       title: "D18 — Vaihtamisopastin (EU-asetus, merkitty N/A)",
       versions: [
         { label: "(EU) 2021/535, liite IX — N/A", unece_eif: null, eu_reference_from: null, eu_reference_until: null, note: "Traficomin taulukossa merkitty N/A: vaatimusta ei sovelleta käytännössä, vaikka M1-luokka kuuluisi muodollisesti soveltamisalaan." }
@@ -1130,6 +1228,7 @@
     E1_2021_1243: {
       section: "E",
       order: 1,
+      categories: ["M1", "N1"],
       title: "E1 — Alkolukon asennuksen helpottaminen (EU-asetus, ei UN-sääntö)",
       versions: [
         { label: "(EU) 2021/1243", unece_eif: null, eu_reference_from: "2022-07-06", eu_reference_until: null, note: "Täydentävät lomakemallit (EU) 2024/1721." }
@@ -1138,6 +1237,7 @@
     E2_2021_1341: {
       section: "E",
       order: 2,
+      categories: ["M1", "N1"],
       title: "E2 — Kuljettajan väsymyksen ja tarkkaavaisuuden tunnistin, DDAW (EU-asetus, ei UN-sääntö)",
       versions: [
         { label: "(EU) 2021/1341 — uudet tyypit", unece_eif: null, eu_reference_from: "2022-07-06", eu_reference_until: "2024-07-07", note: "Ensimmäinen vaihe: uudet tyyppihyväksynnät" },
@@ -1147,6 +1247,7 @@
     E4_E6_E7_R157: {
       section: "E",
       order: 4,
+      categories: ["M1", "M2", "M3", "N1", "N2", "N3"],
       title: "E4/E6/E7 — Automatisoidut ajojärjestelmät (E-sääntö 157, ALKS)",
       versions: [
         { label: "Alkuperäinen versio", unece_eif: "2021-03-22", eu_reference_from: "2021-03-22", eu_reference_until: "2023-01-04", note: "Koski vain M1, enintään 60 km/h" },
@@ -1156,6 +1257,7 @@
     E5_R160: {
       section: "E",
       order: 5,
+      categories: ["M1", "N1"],
       title: "E5 — Onnettomuustietotallennin (E-sääntö 160)",
       versions: [
         { label: "Alkuperäinen versio", unece_eif: "2021-09-30", eu_reference_from: "2022-07-06", eu_reference_until: null, note: "Sovellettu EU:ssa delegoidulla asetuksella (EU) 2022/545. 01-sarja hyväksytty 2022, ei varmistettu EU-käyttöönottoa." }
@@ -1164,6 +1266,7 @@
     E3_E8_E9_empty: {
       section: "E",
       order: 3,
+      categories: [],
       title: "E3/E8/E9 — Ei vielä voimassa olevaa vaatimusta",
       versions: [
         { label: "Ei konkreettista vaatimusta", unece_eif: null, eu_reference_from: null, eu_reference_until: null, note: "Kehittynyt tarkkaamattomuuden varoitus (E3), saattueajo (E8) ja muille tienkäyttäjille tietoa antavat järjestelmät (E9) ovat Traficomin taulukossa tyhjiä rivejä - ei vielä delegoitua asetusta. HUOM: (EU) 2024/1721 viittaa jo ADDW-lomakkeisiin, joten E3:n tilanne kannattaa tarkistaa erikseen." }
@@ -1172,6 +1275,7 @@
     F1_F2_F4_F7_F8_F9_F10_F11: {
       section: "F",
       order: 1,
+      categories: ["M1", "M2", "M3", "N1", "N2", "N3", "O1", "O2", "O3", "O4"],
       title: "F1/F2/F4/F7-F11 — Yleiset rakenneominaisuudet (EU-asetuksen 2021/535 liitteet)",
       versions: [
         { label: "(EU) 2021/535 eri liitteet", unece_eif: null, eu_reference_from: "2022-07-06", eu_reference_until: null, note: "F1 rekisterikilven tila, F2 peruutus, F4 ovien askelmat, F7 lakisääteiset kilvet, F8 hinauslaitteet, F9 roiskesuojat, F10 roiskeenestojärjestelmät, F11 massat ja mitat - kaikki EU-asetuksen liitteitä, ei UN-sääntöjä." }
@@ -1180,6 +1284,7 @@
     F3_R11: {
       section: "F",
       order: 3,
+      categories: ["M1", "N1"],
       title: "F3 — Ovien lukot ja saranat (E-sääntö 11)",
       versions: [
         { label: "04-sarja", unece_eif: null, eu_reference_from: "2011-01-01", eu_reference_until: null, note: "Yhdenmukaistettu GTR nro 1:n kanssa; tarkka EIF-päivä ei vahvistettu - arvio." }
@@ -1188,6 +1293,7 @@
     F5_R26: {
       section: "F",
       order: 5,
+      categories: ["M1", "M2", "M3", "N1", "N2", "N3"],
       title: "F5 — Ulkonevat osat (E-sääntö 26)",
       versions: [
         { label: "04-sarja", unece_eif: "2020-09-25", eu_reference_from: "2020-09-25", eu_reference_until: null, note: "EU:n nykyinen viite (OJ [2022/82]) - vahvistettu EUR-Lexistä." }
@@ -1196,6 +1302,7 @@
     F6_R61: {
       section: "F",
       order: 6,
+      categories: ["N1", "N2", "N3"],
       title: "F6 — Hyötyajoneuvojen ohjaamon ulkonevat osat (E-sääntö 61)",
       versions: [
         { label: "Alkuperäinen versio, täydennys 1", unece_eif: "2006-10-10", eu_reference_from: "2006-10-10", eu_reference_until: null, note: "EU:n viite (OJ L 164, 30.6.2010); UNECE on hyväksynyt lisämuutoksia 2013 ja 2016, ei vahvistettu EU-käyttöönottoa." }
@@ -1204,6 +1311,7 @@
     F12_R55_R102: {
       section: "F",
       order: 12,
+      categories: ["M1", "M2", "M3", "N1", "N2", "N3", "O1", "O2", "O3", "O4"],
       title: "F12 — Mekaaniset kytkentälaitteet (E-säännöt 55/102)",
       versions: [
         { label: "R55: 01-sarja+täyd.7 / R102: alkup.", unece_eif: "2018-02-10", eu_reference_from: "2018-02-10", eu_reference_until: null, note: "R55 EU-viite vahvistettu EUR-Lexistä (OJ [2018/862]); R102 pysynyt alkuperäisenä versiona (OJ L351, 30.12.2008)." }
@@ -1212,6 +1320,7 @@
     F13_R105: {
       section: "F",
       order: 13,
+      categories: ["N1", "N2", "N3", "O1", "O2", "O3", "O4"],
       title: "F13 — Vaarallisten aineiden kuljetus (E-sääntö 105)",
       versions: [
         { label: "05-sarja", unece_eif: null, eu_reference_from: "2010-08-04", eu_reference_until: null, note: "Ehdotettu 2010; tarkka EIF-päivä ei vahvistettu - arvio." }
@@ -1220,6 +1329,7 @@
     F14_R107: {
       section: "F",
       order: 14,
+      categories: ["M2", "M3"],
       title: "F14 — Linja-auton yleinen rakenne (E-sääntö 107)",
       versions: [
         { label: "02-sarja, täydennys 1", unece_eif: "2007-11-05", eu_reference_from: "2007-11-05", eu_reference_until: null, note: "Todennäköinen EU:n viite; tarkka EIF-päivä arvio." }
@@ -1228,6 +1338,7 @@
     F15_R66: {
       section: "F",
       order: 15,
+      categories: ["M2", "M3"],
       title: "F15 — Linja-auton korirakenteen lujuus (E-sääntö 66)",
       versions: [
         { label: "01-sarja", unece_eif: null, eu_reference_from: "2008-01-01", eu_reference_until: null, note: "Täydennys 1 ehdotettu 2007-2008; tarkka EIF-päivä ei vahvistettu - arvio." }
@@ -1236,6 +1347,7 @@
     F16_R118: {
       section: "F",
       order: 16,
+      categories: ["M2", "M3"],
       title: "F16 — Syttyvyys linja-autoissa (E-sääntö 118)",
       versions: [
         { label: "03-sarja, täydennys 1", unece_eif: "2018-10-16", eu_reference_from: "2018-10-16", eu_reference_until: null, note: "EU:n nykyinen viite (OJ [2020/241]) - vahvistettu EUR-Lexistä." }
@@ -1244,6 +1356,7 @@
     G1_R51_R138: {
       section: "G",
       order: 1,
+      categories: ["M1", "M2", "M3", "N1", "N2", "N3"],
       title: "G1 — Melutaso (E-säännöt 51/138 + EU-asetus 540/2014)",
       versions: [
         { label: "R51: 03-sarja / R138: alkup.", unece_eif: "2016-11-01", eu_reference_from: "2016-11-01", eu_reference_until: null, note: "R51 (M/N-melu) 03-sarja jäädytetty toistaiseksi (täyd. 11 valmisteilla); R138 (AVAS/hiljaiset ajoneuvot) alkuperäinen versio. EU-asetus (EU) N:o 540/2014 asettaa raja-arvot." }
@@ -1252,6 +1365,7 @@
     G2_G2a_EC715_2007: {
       section: "G",
       order: 2,
+      categories: ["M1", "N1"],
       title: "G2/G2a — Kevyiden ajon. pakokaasupäästöt ja CO2 (EY 715/2007)",
       versions: [
         { label: "692/2008 (alkup. täytäntöönpano)", unece_eif: null, eu_reference_from: "2008-07-18", eu_reference_until: "2017-06-01", note: "Euro 5/6 -perusvaatimukset" },
@@ -1262,6 +1376,7 @@
     G3_G3a_G3b_EC595_2009: {
       section: "G",
       order: 3,
+      categories: ["M2", "M3", "N2", "N3"],
       title: "G3/G3a/G3b — Raskaiden ajon. päästöt, CO2, perävaunun energiatehokkuus (EY 595/2009)",
       versions: [
         { label: "Perusasetus + (EU) 582/2011", unece_eif: null, eu_reference_from: "2011-05-25", eu_reference_until: null, note: "Euro VI raskaille ajoneuvoille; sovellettu uusiin tyyppeihin 31.12.2012" },
@@ -1271,6 +1386,7 @@
     G4_RDE: {
       section: "G",
       order: 4,
+      categories: ["M1", "N1"],
       title: "G4 — Tieliikenteessä mitatut pakokaasupäästöt (RDE)",
       versions: [
         { label: "RDE-paketti 1 (2016/427)", unece_eif: null, eu_reference_from: "2016-03-10", eu_reference_until: "2016-04-20", note: "Perusti RDE-testin peruskäsitteet" },
@@ -1282,6 +1398,7 @@
     G5_kestavyys: {
       section: "G",
       order: 5,
+      categories: ["M1", "M2", "M3", "N1", "N2", "N3"],
       title: "G5 — Pakokaasupäästöjen kestävyys",
       versions: [
         { label: "(EY) 715/2007 + (EU) 2017/1151", unece_eif: null, eu_reference_from: "2017-06-01", eu_reference_until: null, note: "Kevyet: kestävyys 160 000 km / 5 vuotta. Raskaat: (EY) 595/2009 + (EU) 582/2011." }
@@ -1290,6 +1407,7 @@
     G6_kampikammio: {
       section: "G",
       order: 6,
+      categories: ["M1", "M2", "M3", "N1", "N2", "N3"],
       title: "G6 — Kampikammiopäästöt",
       versions: [
         { label: "(EY) 715/2007 / (EY) 595/2009", unece_eif: null, eu_reference_from: "2017-06-01", eu_reference_until: null, note: "Kevyet: (EU) 2017/1151. Raskaat: (EU) 582/2011." }
@@ -1298,6 +1416,7 @@
     G7_haihtumis: {
       section: "G",
       order: 7,
+      categories: ["M1", "N1"],
       title: "G7 — Haihtumispäästöt (vain kevyet ajoneuvot)",
       versions: [
         { label: "(EY) 715/2007 + (EU) 2017/1151", unece_eif: null, eu_reference_from: "2017-06-01", eu_reference_until: null, note: "Koskee vain M1/N1-luokkia, ei raskaita ajoneuvoja." }
@@ -1306,6 +1425,7 @@
     G8_matala_lampotila: {
       section: "G",
       order: 8,
+      categories: ["M1", "N1"],
       title: "G8 — Matalissa lämpötiloissa syntyvät pakokaasupäästöt (vain kevyet)",
       versions: [
         { label: "(EY) 715/2007 + (EU) 2017/1151", unece_eif: null, eu_reference_from: "2017-06-01", eu_reference_until: null, note: "Kylmäkäynnistys -7°C; koskee vain M1/N1-luokkia." }
@@ -1314,6 +1434,7 @@
     G9_OBD: {
       section: "G",
       order: 9,
+      categories: ["M1", "M2", "M3", "N1", "N2", "N3"],
       title: "G9 — OBD-järjestelmät (päästöt)",
       versions: [
         { label: "(EY) 715/2007 / (EY) 595/2009", unece_eif: null, eu_reference_from: "2012-05-29", eu_reference_until: null, note: "Kevyet: (EU) 459/2012 lopulliset OTL-kynnysarvot, nyt (EU) 2017/1151. Raskaat: (EU) 582/2011." }
@@ -1322,6 +1443,7 @@
     G10_estolaite: {
       section: "G",
       order: 10,
+      categories: ["M1", "M2", "M3", "N1", "N2", "N3"],
       title: "G10 — Estolaitteen käyttökielto (defeat device)",
       versions: [
         { label: "(EY) 715/2007 art. 5(2) / (EY) 595/2009", unece_eif: null, eu_reference_from: "2007-06-20", eu_reference_until: null, note: "Kielto on ollut muuttumattomana voimassa alkuperäisestä hyväksymisestä lähtien; Dieselgate (2015) ei muuttanut itse lakitekstiä, mutta tiukensi valvontaa." }
@@ -1330,6 +1452,7 @@
     G11_lisastrategiat: {
       section: "G",
       order: 11,
+      categories: ["M1", "M2", "M3", "N1", "N2", "N3"],
       title: "G11 — Päästöjenrajoituksen lisästrategiat (AES)",
       versions: [
         { label: "(EY) 715/2007 / (EY) 595/2009", unece_eif: null, eu_reference_from: "2017-06-01", eu_reference_until: null, note: "Kevyet: (EU) 2017/1151. Raskaat: (EU) 582/2011." }
@@ -1338,6 +1461,7 @@
     G12_luvattomat: {
       section: "G",
       order: 12,
+      categories: ["M1", "M2", "M3", "N1", "N2", "N3"],
       title: "G12 — Luvattomien muutosten estäminen",
       versions: [
         { label: "(EY) 715/2007 / (EY) 595/2009", unece_eif: null, eu_reference_from: "2017-06-01", eu_reference_until: null, note: "Kevyet: (EU) 2017/1151. Raskaat: (EU) 582/2011." }
@@ -1346,6 +1470,7 @@
     G13_G14: {
       section: "G",
       order: 13,
+      categories: ["M1", "M2", "M3", "N1", "N2", "N3"],
       title: "G13/G14 — Kierrätettävyys (N/A) / Ilmastointijärjestelmät",
       versions: [
         { label: "G13: N/A / G14: 2006/40/EY", unece_eif: null, eu_reference_from: "2008-01-01", eu_reference_until: null, note: "G13 (2005/64/EY) merkitty N/A - ei sovelleta. G14: F-kaasukielto (GWP>150), täysimääräisesti 1.1.2017 alkaen." }
@@ -1354,6 +1479,7 @@
     H1_2018_858: {
       section: "H",
       order: 1,
+      categories: ["M1", "M2", "M3", "N1", "N2", "N3"],
       title: "H1 — OBD/korjaustiedot (EU-asetus 2018/858)",
       versions: [
         { label: "(EU) 2018/858", unece_eif: null, eu_reference_from: "2020-09-01", eu_reference_until: null, note: "Yleinen tyyppihyväksyntäasetus, korvasi direktiivin 2007/46/EY. Muutettu useilla myöhemmillä säädöksillä (mm. (EU) 2022/1362, (EU) 2023/2724)." }
@@ -1362,6 +1488,7 @@
     H2_R156: {
       section: "H",
       order: 2,
+      categories: ["M1", "M2", "M3", "N1", "N2", "N3"],
       title: "H2 — Ohjelmistopäivitys (E-sääntö 156)",
       versions: [
         { label: "Alkuperäinen versio", unece_eif: "2021-01-22", eu_reference_from: "2022-07-06", eu_reference_until: null, note: "SUMS-vaatimus; EU:ssa pakollinen uusille tyypeille 6.7.2022 alkaen. 01-sarja (RXSWIN-tunnisteet) vasta ehdotusvaiheessa (2025)." }
@@ -1433,7 +1560,7 @@
       </div>`;
   }
 
-  function render(dateIso) {
+  function render(dateIso, category) {
     if (!dateIso) {
       results.innerHTML = `<div class="empty-state">Valitse päivämäärä ja paina Hae.</div>`;
       return;
@@ -1441,10 +1568,18 @@
 
     const bySection = {};
     Object.entries(REGULATIONS).forEach(([key, reg]) => {
+      if (category && Array.isArray(reg.categories) && reg.categories.length > 0 && !reg.categories.includes(category)) {
+        return;
+      }
       const sec = reg.section || "?";
       if (!bySection[sec]) bySection[sec] = [];
       bySection[sec].push([key, reg]);
     });
+
+    if (Object.keys(bySection).length === 0) {
+      results.innerHTML = `<div class="empty-state">Ei kohteita luokalle ${category} tällä hakuehdolla.</div>`;
+      return;
+    }
 
     const html = SECTION_ORDER
       .filter(sec => bySection[sec])
@@ -1468,10 +1603,11 @@
   form.addEventListener("submit", (e) => {
     e.preventDefault();
     const val = document.getElementById("entry-date").value;
-    render(val);
+    const category = document.getElementById("vehicle-category").value;
+    render(val, category);
   });
 
-  render(null);
+  render(null, "");
 </script>
 </body>
 </html>
