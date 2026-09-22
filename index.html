@@ -247,6 +247,57 @@
     .row-tag { flex: 1 1 100%; }
   }
 
+  .legend {
+    border: 1px solid var(--line);
+    background: var(--paper-raised);
+    padding: 0.9rem 1.2rem 1rem;
+    margin-bottom: 2rem;
+    font-size: 0.82rem;
+  }
+
+  .legend-title {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.72rem;
+    color: var(--ink-soft);
+    margin: 0 0 0.6rem;
+  }
+
+  .legend-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 0.35rem 1.5rem;
+    margin: 0;
+  }
+
+  .legend-list > div {
+    display: flex;
+    gap: 0.5rem;
+    align-items: baseline;
+  }
+
+  .legend-list dt {
+    font-family: "IBM Plex Mono", monospace;
+    font-weight: 600;
+    color: var(--accent-ink);
+    flex: 0 0 auto;
+    min-width: 1.6em;
+  }
+
+  .legend-list dd {
+    margin: 0;
+    color: var(--ink-soft);
+    line-height: 1.4;
+  }
+
+  .legend-source {
+    margin: 0.8rem 0 0;
+    padding-top: 0.6rem;
+    border-top: 1px solid var(--line);
+    font-size: 0.78rem;
+    color: var(--ink-soft);
+  }
+  .legend-source a { color: var(--accent-ink); }
+
   .empty-state {
     font-size: 0.95rem;
     color: var(--ink-soft);
@@ -278,7 +329,7 @@
   <h1>Mikä sääntöversio koski ajoneuvoasi?</h1>
   <p class="lede">
     Syötä ajoneuvon käyttöönotto- tai rekisteröintipäivä. Työkalu hakee, mikä muutossarja
-    kustakin katetusta E-säännöstä (Taulukko 1:n osiot A ja B) oli kyseisenä päivänä
+    kustakin katetusta E-säännöstä (Taulukko 1:n osiot A ja H) oli kyseisenä päivänä
     EU-tyyppihyväksynnässä voimassa oleva viite.
   </p>
 
@@ -305,6 +356,26 @@
     </div>
     <button type="submit">Hae</button>
   </form>
+
+  <div class="legend">
+    <p class="legend-title">Osoittamistapojen koodit</p>
+    <dl class="legend-list">
+      <div><dt>X</dt><dd>EY-/EU-tyyppihyväksyntätodistus (tai vastaava E-tyyppihyväksyntätodistus)</dd></div>
+      <div><dt>A</dt><dd>Nimetyn tutkimuslaitoksen selvitys</dd></div>
+      <div><dt>H</dt><dd>Hyväksytyn asiantuntijan selvitys</dd></div>
+      <div><dt>B</dt><dd>Valmistajan todistus (testien, laskelmien tai mittausten perusteella)</dd></div>
+      <div><dt>C</dt><dd>Hakijan on esitettävä asiakirjat, joiden perusteella hyväksynnän tai katsastuksen suorittaja voi vakuuttua vaatimusten täyttymisestä</dd></div>
+      <div><dt>E</dt><dd>Todetaan hyväksynnän tai katsastuksen yhteydessä tehtävässä ajoneuvon tarkastuksessa</dd></div>
+      <div><dt>I</dt><dd>Sovelletaan yksittäishyväksynnässä tai rekisteröintikatsastuksessa tietyin ehdoin (esim. FMVSS/JSRRV-vastaavuus)</dd></div>
+      <div><dt>*</dt><dd>Jos varuste on asennettu ajoneuvoon, sen on täytettävä vaatimukset</dd></div>
+      <div><dt>N/A</dt><dd>Vaatimusta ei sovelleta</dd></div>
+    </dl>
+    <p class="legend-source">
+      Koodit ja Taulukko 1, johon tämä työkalu perustuu, ovat peräisin Traficomin määräyksestä
+      "Autojen ja niiden perävaunujen tekniset vaatimukset":
+      <a href="https://www.traficom.fi/files/media/regulation/M%C3%A4%C3%A4r%C3%A4ys%20autojen%20ja%20niiden%20per%C3%A4vaunujen%20tekniset%20vaatimukset.pdf" target="_blank" rel="noopener">traficom.fi (PDF)</a>.
+    </p>
+  </div>
 
   <div id="results" aria-live="polite"></div>
 
